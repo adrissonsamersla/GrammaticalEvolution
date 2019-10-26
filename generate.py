@@ -15,10 +15,8 @@ def generateEquation(expression):
     
     return lambda X1,X2,X3,X4,X5,X6,X7,X8: eval(expression)
 
-def generatePopulation(populationSize):
+def generatePopulation(populationSize,sizeChromo,rangeLimit = 255):
     ##############Pre-Sets###############
-    sizeChromo = 10
-    rangeLimit = 255
     chromoList = []
 
     for single in range(0,populationSize):
