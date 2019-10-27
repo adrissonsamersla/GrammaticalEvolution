@@ -2,6 +2,7 @@ from random import randrange,random
 
 def tournament(chromosList,errorAverage):
     
+    """Função é responsável por selecionar aleatoriamente os chromossomos e selecionar os mais aptos a seguirem"""
     afterTournamentList = []
     sizeList = len(chromosList)
 
@@ -23,6 +24,8 @@ def tournament(chromosList,errorAverage):
 
 def crossing(singleA,singleB):
     
+    """Função responsável pelo provável cruzamento dos chromossomos"""
+
     lenChromo = len(singleA)
     randPosic = randrange(lenChromo)
     
@@ -39,9 +42,10 @@ def crossing(singleA,singleB):
 
 
 def mutation(chromosList):
-    
+    """Função que promove a mutação e o cruzamento de acordo com as probabilidades estipuladas"""
     newGeneration = []
     probCrossing = 0.8
+    probMutation = 0.1
     rangeLimit = 255
     
     while chromosList:
@@ -68,12 +72,14 @@ def mutation(chromosList):
     for l in newGeneration:
         sizeL = len(l)
         for i in range(0,sizeL):
-            if random() < 0.1:
+            if random() < probMutation:
                 l[i] = randrange(rangeLimit)
         
 
     return newGeneration
         
 def evolve(chromosList,errorAverage):
+    """Função principal responsável por chamar todas as funções desse arquivo"""
+
     evolvedList = mutation(tournament(chromosList,errorAverage))
     return evolvedList
