@@ -1,4 +1,4 @@
 #Parâmetros globais
 configs = {
-    "NUM_VOLTAS_CROMOSSOMO" : 3
+    "NUM_VOLTAS_CROMOSSOMO" : 5
 }

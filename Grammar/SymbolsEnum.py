@@ -10,6 +10,8 @@ class NaoTerminal(MyEnum):
     CONST = 3
     BIN_OP = 4
     UNI_OP = 5
+    BIN_NONNEG_OP = 6
+    UNI_NONNEG_OP = 7
 
 class Variavel(MyEnum):
     X1 = "X1"
@@ -30,6 +32,8 @@ class BinOperations(MyEnum):
     SUB = "-"
     MUT = "*"
     DIV = "/"
+
+class NonNegBinOperations(MyEnum):
     POW = "**"
 
 class UniOperations(MyEnum):
@@ -37,5 +41,7 @@ class UniOperations(MyEnum):
     SIN = "sin"
     COS = "cos"
     EXP = "exp"
+
+class NonNegUniOperations(MyEnum):
     LOG = "log"
     SQRT = "sqrt"

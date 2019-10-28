@@ -35,23 +35,40 @@ def gera_producoes(cromossomo):
         ci = cromossomo[cont]
 
         if (element == NaoTerminal.EXPRESSION):
-            op = ci % 4
+            op = ci % 6
 
-            if (op == 0):
+            if (op == 0): # BIN_OP
                 l[pos_primeiro] = Parenteses.ABRE_PAR
                 l.insert(pos_primeiro + 1, NaoTerminal.EXPRESSION)
                 l.insert(pos_primeiro + 2, NaoTerminal.BIN_OP)
                 l.insert(pos_primeiro + 3, NaoTerminal.EXPRESSION)
                 l.insert(pos_primeiro + 4, Parenteses.FECHA_PAR)
-            elif (op == 1):
+            elif (op == 1): # UNI_OP
                 l[pos_primeiro] = NaoTerminal.UNI_OP
                 l.insert(pos_primeiro + 1, Parenteses.ABRE_PAR)
                 l.insert(pos_primeiro + 2, NaoTerminal.EXPRESSION)
                 l.insert(pos_primeiro + 3, Parenteses.FECHA_PAR)
-            elif (op == 2):
+            elif (op == 2): # VAR
                 l[pos_primeiro] = NaoTerminal.VAR
-            else:
+            elif (op == 3): # CONST
                 l[pos_primeiro] = NaoTerminal.CONST
+            elif (op == 4): # BIN_NONNEG_OP
+                l[pos_primeiro] = Parenteses.ABRE_PAR
+                l.insert(pos_primeiro + 1, UniOperations.ABS)
+                l.insert(pos_primeiro + 2, Parenteses.ABRE_PAR)
+                l.insert(pos_primeiro + 3, NaoTerminal.EXPRESSION)
+                l.insert(pos_primeiro + 4, Parenteses.FECHA_PAR)
+                l.insert(pos_primeiro + 5, NaoTerminal.BIN_NONNEG_OP)
+                l.insert(pos_primeiro + 6, NaoTerminal.EXPRESSION)
+                l.insert(pos_primeiro + 7, Parenteses.FECHA_PAR)
+            else: # UNI_NONNEG_OP
+                l[pos_primeiro] = NaoTerminal.UNI_NONNEG_OP
+                l.insert(pos_primeiro + 1, Parenteses.ABRE_PAR)
+                l.insert(pos_primeiro + 2, UniOperations.ABS)
+                l.insert(pos_primeiro + 3, Parenteses.ABRE_PAR)
+                l.insert(pos_primeiro + 4, NaoTerminal.EXPRESSION)
+                l.insert(pos_primeiro + 5, Parenteses.FECHA_PAR)
+                l.insert(pos_primeiro + 6, Parenteses.FECHA_PAR)
 
         elif (element == NaoTerminal.VAR):
             op = ci % 8
@@ -75,8 +92,8 @@ def gera_producoes(cromossomo):
         elif (element == NaoTerminal.CONST):
             l[pos_primeiro] = ci
 
-        elif (element ==NaoTerminal.BIN_OP):
-            op = ci % 5
+        elif (element == NaoTerminal.BIN_OP):
+            op = ci % 4
 
             if (op == 0):
                 l[pos_primeiro] = BinOperations.ADD
@@ -84,13 +101,11 @@ def gera_producoes(cromossomo):
                 l[pos_primeiro] = BinOperations.DIV
             elif (op == 2):
                 l[pos_primeiro] = BinOperations.MUT
-            elif (op == 3):
-                l[pos_primeiro] = BinOperations.POW
             else:
                 l[pos_primeiro] = BinOperations.SUB
 
-        else:
-            op = ci % 6
+        elif (element == NaoTerminal.UNI_OP):
+            op = ci % 4
 
             if (op == 0):
                 l[pos_primeiro] = UniOperations.ABS
@@ -98,12 +113,19 @@ def gera_producoes(cromossomo):
                 l[pos_primeiro] = UniOperations.COS
             elif (op == 2):
                 l[pos_primeiro] = UniOperations.EXP
-            elif (op == 3):
-                l[pos_primeiro] = UniOperations.LOG
-            elif (op == 4):
-                l[pos_primeiro] = UniOperations.SIN
             else:
-                l[pos_primeiro] = UniOperations.SQRT
+                l[pos_primeiro] = UniOperations.SIN
+
+        elif (element == NaoTerminal.UNI_NONNEG_OP):
+            op = ci % 2
+
+            if (op == 0):
+                l[pos_primeiro] = NonNegUniOperations.LOG
+            else:
+                l[pos_primeiro] = NonNegUniOperations.SQRT
+
+        else:
+            l[pos_primeiro] = NonNegBinOperations.POW
 
         cont = cont + 1
         if (cont == len(cromossomo)):
