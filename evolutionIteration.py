@@ -4,8 +4,8 @@ from evolve import evolve
 
 def evolutionIteration(numberGenerations):    
     
-    populationSize = 100
-    sizeChromo = 10
+    populationSize = 1000
+    sizeChromo = 500
     #rangeLimit = 255
     data = readCSV('training.csv')
     

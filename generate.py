@@ -39,21 +39,31 @@ def generate_error_expression_list(data,chromoList):
     ###################################
         
     for single in range(0,populationSize):
-        
+        f_real_list = []
+        f_x_list = []
         error = []
         expression = derivacao(chromoList[single]) #Calcula a expressão baseado na gramática pre determinada
         expressionList.append(expression) #Recebe as expressão dependendo do cromossomo
-        
+        print(expression)
         function = generateEquation(expressionList[single]) #Calcula a função
 
         for i in range(0,rows_data):
             try:
                 [id,*args,f_real] = data[i].values()
-                e = abs((f_real - function(*args))**2)
+                f_real_list.append(f_real)
+                f_x = function(*args)
+                #e = abs((f_real - function(*args))**2)
+                
+            except ValueError:
+                e = overFlowError
             
             except OverflowError:
                 e = overFlowError
+
+            except ZeroDivisionError:
+                e = overFlowError
             
+
             error.append(e)
             
         errorAverage.append((sum(error)/rows_data))
