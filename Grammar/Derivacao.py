@@ -51,7 +51,7 @@ def gera_producoes(cromossomo):
             elif (op == 2): # VAR
                 l[pos_primeiro] = NaoTerminal.VAR
             elif (op == 3): # CONST
-                l[pos_primeiro] = NaoTerminal.CONST
+                l[pos_primeiro] = NaoTerminal.VAR
             elif (op == 4): # BIN_NONNEG_OP
                 l[pos_primeiro] = Parenteses.ABRE_PAR
                 l.insert(pos_primeiro + 1, UniOperations.ABS)
@@ -124,8 +124,8 @@ def gera_producoes(cromossomo):
             else:
                 l[pos_primeiro] = NonNegUniOperations.SQRT
 
-        else:
-            l[pos_primeiro] = NonNegBinOperations.POW
+        #else:
+        #    l[pos_primeiro] = NonNegUniOperations.POW
 
         cont = cont + 1
         if (cont == len(cromossomo)):
