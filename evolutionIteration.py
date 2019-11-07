@@ -4,7 +4,7 @@ from evolve import evolve
 
 def evolutionIteration(numberGenerations):    
     
-    populationSize = 1000
+    populationSize = 2000
     sizeChromo = 500
     #rangeLimit = 255
     data = readCSV('training.csv')
@@ -22,7 +22,7 @@ def evolutionIteration(numberGenerations):
     optimalExpression = optimalList[0][1]
     optimalError = optimalList[0][0]
 
-    return [optimalExpression,optimalError]
+    return [optimalList]
     
 
     

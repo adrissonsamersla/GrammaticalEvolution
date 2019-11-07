@@ -3,7 +3,7 @@ from math import exp,log,sqrt,cos,sin
 from readCSV import readCSV
 from Grammar import derivacao
 
-overFlowError = 1000000000000000
+overFlowError = 1000000000
 
 def generateChromos(sizeChromo,rangeLimit):
     """ Função geradora dos cromossomos, com valores aleatórios entre [0,rangeLimit) """
@@ -39,8 +39,7 @@ def generate_error_expression_list(data,chromoList):
     ###################################
         
     for single in range(0,populationSize):
-        f_real_list = []
-        f_x_list = []
+        
         error = []
         expression = derivacao(chromoList[single]) #Calcula a expressão baseado na gramática pre determinada
         expressionList.append(expression) #Recebe as expressão dependendo do cromossomo
@@ -50,10 +49,8 @@ def generate_error_expression_list(data,chromoList):
         for i in range(0,rows_data):
             try:
                 [id,*args,f_real] = data[i].values()
-                f_real_list.append(f_real)
-                f_x = function(*args)
-                #e = abs((f_real - function(*args))**2)
-                
+                e = abs((f_real - function(*args))**2)
+
             except ValueError:
                 e = overFlowError
             
