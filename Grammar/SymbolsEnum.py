@@ -1,5 +1,14 @@
 from enum import Enum
 
+weights = {
+    "BIN_OP": 4,
+    "UNI_OP": 5,
+    "BIN_NONNEG_OP": 1,
+    "UNI_NONNEG_OP": 2,
+    "CONST": 1,
+    "VAR": 3
+}
+
 class MyEnum(Enum):
     def __str__(self):
         return str(self.value)
@@ -41,6 +50,7 @@ class UniOperations(MyEnum):
     SIN = "sin"
     COS = "cos"
     EXP = "exp"
+    NEG = "-"
 
 class NonNegUniOperations(MyEnum):
     LOG = "log"
