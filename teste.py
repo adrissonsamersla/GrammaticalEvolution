@@ -1,7 +1,6 @@
 from evolutionIteration import evolutionIteration
+import readCSV
 
-[a,b] = evolutionIteration(10)
+exp = "(X1-((X4*sqrt(abs((X1*X4))))-sqrt(abs(X8))))"
 
-print(a)
-print(b)
-
+readCSV.writeCSV('sample.csv','testing.csv',exp)

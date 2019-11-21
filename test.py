@@ -1,6 +1,8 @@
 from evolutionIteration import evolutionIteration
 import readCSV
-[lista] = evolutionIteration(10)
-print(lista[0][0])
-print(lista[0][1])
-readCSV.writeCSV('sample.csv','testing.csv',lista[0][1])
+lista = evolutionIteration(75)
+print(lista)
+melhor = sorted(lista, key = lambda x: x[0])
+print(melhor[0][0])
+print(melhor[0][1])
+readCSV.writeCSV('sample.csv','testing.csv',melhor[0][1])

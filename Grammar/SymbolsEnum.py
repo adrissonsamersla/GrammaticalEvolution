@@ -1,12 +1,19 @@
 from enum import Enum
 
 weights = {
-    "BIN_OP": 4,
-    "UNI_OP": 5,
-    "BIN_NONNEG_OP": 1,
-    "UNI_NONNEG_OP": 2,
-    "CONST": 1,
-    "VAR": 3
+    #"BIN_OP": 4,
+    #"UNI_OP": 5,
+    #"BIN_NONNEG_OP": 1,
+    #"UNI_NONNEG_OP": 2,
+    #"CONST": 1,
+    #"VAR": 3
+
+    "BIN_OP": 5,
+    "UNI_OP": 0,
+    "BIN_NONNEG_OP": 0,
+    "UNI_NONNEG_OP": 3,
+    #"CONST": 1,
+    "VAR": 8
 }
 
 class MyEnum(Enum):
@@ -40,10 +47,11 @@ class BinOperations(MyEnum):
     ADD = "+"
     SUB = "-"
     MUT = "*"
-    DIV = "/"
+    #DIV = "/"
 
 class NonNegBinOperations(MyEnum):
     POW = "**"
+    pass
 
 class UniOperations(MyEnum):
     ABS = "abs"

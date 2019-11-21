@@ -44,8 +44,8 @@ def crossing(singleA,singleB):
 def mutation(chromosList):
     """Função que promove a mutação e o cruzamento de acordo com as probabilidades estipuladas"""
     newGeneration = []
-    probCrossing = 0.8
-    probMutation = 0.1
+    probCrossing = 0.99
+    probMutation = 0.9
     rangeLimit = 255
     
     while chromosList:
